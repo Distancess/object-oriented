@@ -12,36 +12,37 @@ Scan::~Scan()
 {	
 }
 
-//ÃèÊöScanÀàµ±ÖĞµÄº¯Êı·½·¨£º 
+//æè¿°Scanç±»å½“ä¸­çš„å‡½æ•°æ–¹æ³•ï¼š 
 
 queue<string> Scan::ToStringQueue(string input)
-//void Scan::ToStringQueue(string input ,queue<string> *Que)¢Ú 
+//void Scan::ToStringQueue(string input ,queue<string> *Que)â‘¡ 
 {
-	int l = input.size();     //¼ÆËã×Ö·û´®³¤¶È; 
-	int flag=0,total=0;       //flag×÷Îª±ê¼Ç³öÏÖÎ»Êı³¬¹ıÊ®Î»µÄÇé¿ö,³öÏÖ±ê¼ÇÎª1,total±íÊ¾µ±Ç°Êı×ÖÎ»Êı;
+	int l = input.size();     //è®¡ç®—å­—ç¬¦ä¸²é•¿åº¦; 
+	int flag=0,total=0;       //flagä½œä¸ºæ ‡è®°å‡ºç°ä½æ•°è¶…è¿‡åä½çš„æƒ…å†µ,å‡ºç°æ ‡è®°ä¸º1,totalè¡¨ç¤ºå½“å‰æ•°å­—ä½æ•°;
 	for (int i=0; i<l;)
 	{
-		string temp="";      //Ìí¼ÓÒ»¸ö¿Õ×Ö·û´®´æÈ¡±í´ïÊ½;
-        //É¨ÃèÊµÊı²¿·ÖÅĞ¶Ï²¢¼ÆËãÊµÊıÎ»Êı;  
+		string temp="";      //æ·»åŠ ä¸€ä¸ªç©ºå­—ç¬¦ä¸²å­˜å–è¡¨è¾¾å¼;
+        //æ‰«æå®æ•°éƒ¨åˆ†åˆ¤æ–­å¹¶è®¡ç®—å®æ•°ä½æ•°;  
 		while (i<l && input[i]>='0' && input[i]<='9' || input[i]=='.')    
 		{    
 			temp+=input[i];
 			i++;
+			if(input[i]=='.')   total-=1;  //å»é™¤å°æ•°ç‚¹; 
 			total++;
 	    }
-		if(total>10)         //ÅĞ¶ÏÊÇ·ñ³¬¹ı10Î»Êı,Èô³¬¹ıÔòÊä³öError²¢Êä³ö³¬³öµÄÊµÊı;
+		if(total>10)         //åˆ¤æ–­æ˜¯å¦è¶…è¿‡10ä½æ•°,è‹¥è¶…è¿‡åˆ™è¾“å‡ºErrorå¹¶è¾“å‡ºè¶…å‡ºçš„å®æ•°;
 		{
-			cout<<"Error£¬"<<"³¬¹ıÊ®Î»ÊıµÄÊµÊıÎª£º"<<temp<<endl;
+			cout<<"Errorï¼Œ"<<"è¶…è¿‡åä½æ•°çš„å®æ•°ä¸ºï¼š"<<temp<<endl;
 			temp="";
 			total=0;
 			flag=1;
 		}
-		if (temp!="")       //½«·ûºÏÒªÇóµÄÊµÊıÌí¼Óµ½¶ÓÁĞÖĞ;
+		if (temp!="")       //å°†ç¬¦åˆè¦æ±‚çš„å®æ•°æ·»åŠ åˆ°é˜Ÿåˆ—ä¸­;
 		{
 			arithmetic.push(temp);
 			total=0;
 		}
-        //É¨ÃèÔËËã×Ö·û½«×Ö·û´æÈëÒÑÓĞ¶ÓÁĞÖĞ 
+        //æ‰«æè¿ç®—å­—ç¬¦å°†å­—ç¬¦å­˜å…¥å·²æœ‰é˜Ÿåˆ—ä¸­ 
 		while (i<l && (input[i]<'0' || input[i]>'9'))
 		{
 			temp="";
@@ -51,6 +52,6 @@ queue<string> Scan::ToStringQueue(string input)
 			i++;
 		}
 	}
-	if(flag==1) cout<<"Ê£ÓàËÄÔòÔËËã±í´ïÊ½Îª£º"<<endl;     //Èô³¬¹ıÊ®Î»Êı,Êä³öÌáÊ¾ĞÅÏ¢; 
-	return arithmetic;           //½«Ëù»ñµÃµÄ¶ÓÁĞ·µ»Ø; 
+	if(flag==1) cout<<"å‰©ä½™å››åˆ™è¿ç®—è¡¨è¾¾å¼ä¸ºï¼š"<<endl;     //è‹¥è¶…è¿‡åä½æ•°,è¾“å‡ºæç¤ºä¿¡æ¯; 
+	return arithmetic;           //å°†æ‰€è·å¾—çš„é˜Ÿåˆ—è¿”å›; 
 }
