@@ -6,13 +6,13 @@
 
 using namespace std;
 
-//´´½¨PrintÀà ÓÃÀ´Êä³ö¶ÓÁĞ 
+//åˆ›å»ºPrintç±» ç”¨æ¥è¾“å‡ºé˜Ÿåˆ— 
 class Print
 {
 	public:
 		Print();
 		~Print();
-        void PrintStringQueue(string input);  //¶¨ÒåvoidÀàº¯ÊıµÄ·½·¨£» 
+        void PrintStringQueue(string input);  //å®šä¹‰voidç±»å‡½æ•°ï¼› 
 	private:
 };
 
