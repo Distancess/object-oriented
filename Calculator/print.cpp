@@ -12,7 +12,7 @@ Print::~Print()
 {
 }
 
-//定义Print类当中的函数方法： 
+/*定义Print类当中的函数方法*/ 
 void Print::PrintStringQueue(string input) 
 {
 	/*创建Scan对象s*/ 
