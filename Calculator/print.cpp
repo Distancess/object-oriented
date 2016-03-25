@@ -15,11 +15,16 @@ Print::~Print()
 //定义Print类当中的函数方法： 
 void Print::PrintStringQueue(string input) 
 {
-	Scan s;                                            //创建Scan对象s; 
-	queue<string> tmp = s.ToStringQueue(input);        //获得Scan里所得的队列; 
-	while(!tmp.empty())
+	/*创建Scan对象s*/ 
+	Scan s;
+	
+	/*获得Scan里所扫描的队列*/                                            
+	queue<string> tmp = s.ToStringQueue(input);  
+	
+	/*依次输出符合要求的元素*/
+	while ( !tmp.empty() )
 	{
-		cout<<tmp.front()<<endl;                       //输出队列中的元素; 
-		tmp.pop();                                     //删除队首元素; 
+		cout << tmp.front() << endl;
+		tmp.pop();                                  
 	}
 }

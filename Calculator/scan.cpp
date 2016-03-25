@@ -5,13 +5,14 @@
 using namespace std;
 
 Scan::Scan()
-{	
+{
 }
 
 Scan::~Scan()
-{	
+{
 }
 
+<<<<<<< 17077e6a7266e7cebfdb72eb4c9409fe0bdc5bac
 //æè¿°Scanç±»å½“ä¸­çš„å‡½æ•°æ–¹æ³•ï¼š 
 
 queue<string> Scan::ToStringQueue(string input)
@@ -34,24 +35,82 @@ queue<string> Scan::ToStringQueue(string input)
 		{
 			cout<<"Errorï¼Œ"<<"è¶…è¿‡åä½æ•°çš„å®žæ•°ä¸ºï¼š"<<temp<<endl;
 			temp="";
-			total=0;
-			flag=1;
-		}
-		if (temp!="")       //å°†ç¬¦åˆè¦æ±‚çš„å®žæ•°æ·»åŠ åˆ°é˜Ÿåˆ—ä¸­;
+=======
+/*ÃèÊöScanÀàµ±ÖÐµÄº¯Êý·½·¨*/
+queue<string> Scan::ToStringQueue(string input)
+/*void Scan::ToStringQueue(string input ,queue<string> *Que)¢Ú·½·¨2*/
+{
+	/*¼ÆËã×Ö·û´®³¤¶È*/
+	int l = input.size();     
+	
+	/*flg×÷Îª±ê¼Ç³öÏÖÎ»Êý³¬¹ýÊ®Î»µÄÇé¿ö,³öÏÖ±ê¼ÇÎª1,total±íÊ¾µ±Ç°Êý×ÖÎ»Êý*/
+	int flg=0,total=0;       
+	for (int i=0; i < l;)
+	{
+		/*Ìí¼ÓÒ»¸ö¿Õ×Ö·û´®´æÈ¡±í´ïÊ½*/
+		string tmp="";      
+		
+		/*É¨ÃèÊµÊý²¿·ÖÅÐ¶Ï²¢¼ÆËãÊµÊýÎ»Êý*/
+		while (i < l && input[i] >= '0'
+		        && input[i] <= '9' || input[i] == '.')
 		{
-			arithmetic.push(temp);
+			tmp+=input[i];
+			i++;
+			if(input[i] == '.')
+			{
+				total-=1;  /*´¦ÀíÎ»ÊýÊ±È¥³ýÐ¡Êýµã*/
+			}
+			total++;
+		}
+
+		/*ÅÐ¶ÏÊÇ·ñ³¬¹ý10Î»Êý,Èô³¬¹ýÔòÊä³öError²¢Êä³ö³¬³öµÄÊµÊý*/
+		if(total > 10)         
+		{
+			cout<<"Error£¬"<<"³¬¹ýÊ®Î»ÊýµÄÊµÊýÎª£º"<<tmp<<endl;
+			tmp="";
+>>>>>>> code finish
+			total=0;
+			flg=1;
+		}
+<<<<<<< 17077e6a7266e7cebfdb72eb4c9409fe0bdc5bac
+		if (temp!="")       //å°†ç¬¦åˆè¦æ±‚çš„å®žæ•°æ·»åŠ åˆ°é˜Ÿåˆ—ä¸­;
+=======
+
+		/*½«·ûºÏÒªÇóµÄÊµÊýÌí¼Óµ½¶ÓÁÐÖÐ*/
+		if (tmp != "")       
+>>>>>>> code finish
+		{
+			arithmetic.push(tmp);
 			total=0;
 		}
+<<<<<<< 17077e6a7266e7cebfdb72eb4c9409fe0bdc5bac
         //æ‰«æè¿ç®—å­—ç¬¦å°†å­—ç¬¦å­˜å…¥å·²æœ‰é˜Ÿåˆ—ä¸­ 
+=======
+
+		/*É¨ÃèÔËËã×Ö·û½«×Ö·û´æÈëÒÑÓÐ¶ÓÁÐÖÐ*/
+>>>>>>> code finish
 		while (i<l && (input[i]<'0' || input[i]>'9'))
 		{
-			temp="";
-			temp+=input[i];
-			arithmetic.push(temp);
-			temp="";
+			tmp="";
+			tmp+=input[i];
+			arithmetic.push(tmp);
+			tmp="";
 			i++;
 		}
 	}
+<<<<<<< 17077e6a7266e7cebfdb72eb4c9409fe0bdc5bac
 	if(flag==1) cout<<"å‰©ä½™å››åˆ™è¿ç®—è¡¨è¾¾å¼ä¸ºï¼š"<<endl;     //è‹¥è¶…è¿‡åä½æ•°,è¾“å‡ºæç¤ºä¿¡æ¯; 
 	return arithmetic;           //å°†æ‰€èŽ·å¾—çš„é˜Ÿåˆ—è¿”å›ž; 
+=======
+
+	/*Èô³¬¹ýÊ®Î»Êý,Êä³öÌáÊ¾ÐÅÏ¢*/
+	if(flg == 1)
+	{
+		cout<<"Ê£ÓàËÄÔòÔËËã±í´ïÊ½Îª£º"<<endl;
+	}
+	
+	 /*½«Ëù»ñµÃµÄ¶ÓÁÐ·µ»Ø*/
+	return arithmetic;          
+>>>>>>> code finish
 }
+
