@@ -12,7 +12,6 @@ class Calculation
 		Calculation();
 		~Calculation();
 		void Getqueue(string input);
-		bool Iserror();
 	protected:
 		bool error;
 };

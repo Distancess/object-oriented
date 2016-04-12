@@ -24,10 +24,6 @@ Calculation::~Calculation()
 {
 }
 
-bool Calculation::Iserror()
-{
-	return error;
-}
 //------------------------------------------------------
 	stack<string>sign; 
 	stack<string>opr;
