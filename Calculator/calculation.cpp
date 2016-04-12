@@ -155,7 +155,10 @@ void Calculation::Getqueue(string input)
 				else
 				{
 					if ( a==0 )
+					{
 						error = true;
+						rpn.pop();
+					}
 					else
 						num.push((double)b/a);
 					rpn.pop();
