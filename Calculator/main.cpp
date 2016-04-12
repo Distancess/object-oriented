@@ -13,21 +13,35 @@ History:
 #include <iostream>
 #include <string>
 #include "print.h"
+#include "calculation.h"
 
 using namespace std; 
 
-int main()
+int main(int argc, char* argv[])
 {
 	/*输出提示信息*/
 	cout << "请输入一个四则运算表达式:" << endl;      
 	
 	/*创建Print的对象p*/
-	Print p;                                       
+	Print p; 
+	/*创建Calculation的对象c*/
+	Calculation c;                                      
 	/*定义一个字符串 */
 	string input;                                
 	cin >> input;
-	
-	/*调用Print类 输出队列*/
-	p.PrintStringQueue( input );                   
-    return 0;
+	if (input == "-a")
+	{
+		cin >> input;
+		/*调用Print类 输出队列*/
+		p.PrintStringQueue( input );                   
+		
+		cout << "= ";
+		
+    	c.Getqueue( input );
+	}
+	else
+	{
+    	c.Getqueue( input );
+	}
+	return 0;
 }

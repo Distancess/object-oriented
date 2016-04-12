@@ -21,10 +21,18 @@ void Print::PrintStringQueue(string input)
 	/*获得Scan里所扫描的队列*/                                            
 	queue<string> tmp = s.ToStringQueue(input);  
 	
-	/*依次输出符合要求的元素*/
-	while ( !tmp.empty() )
+	if (s.IsError() == true)
 	{
-		cout << tmp.front() << endl;
-		tmp.pop();                                  
+		cout << "Error" <<endl;
+	}
+	else
+	{
+		/*依次输出符合要求的元素*/
+		while ( !tmp.empty() )
+		{
+			cout << tmp.front() ;
+			tmp.pop();                                  
+		}
+		
 	}
 }
