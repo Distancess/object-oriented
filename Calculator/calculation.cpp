@@ -154,14 +154,18 @@ void Calculation::Getqueue(string input)
 				}
 				else
 				{
+					//除数为0时的处理 
 					if ( a==0 )
 					{
 						error = true;
-						rpn.pop();
+						num.push(0);
+						rpn.pop(); 
 					}
 					else
+					{
 						num.push((double)b/a);
-					rpn.pop();
+						rpn.pop();
+					}
 				} 
 			}
 		}
