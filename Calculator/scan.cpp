@@ -6,7 +6,7 @@ using namespace std;
 
 Scan::Scan()
 {
-	error = false; 
+	error = false;
 }
 
 Scan::~Scan()
@@ -19,15 +19,117 @@ bool Scan::IsError()
 }
 /*描述Scan类当中的函数方法*/
 queue<string> Scan::ToStringQueue(string input)
-/*void Scan::ToStringQueue(string input ,queue<string> *Que)②方法2*/
 {
-    /*计算字符串长度*/
-    int l = input.size();     
-    
+	while (arithmetic.empty() == false)
+		arithmetic.pop();
+    //-------------预处理使之合法
+	string temp="";	
+	int i, l, n = 0, t = 0;
+	l = input.size();
+	//----2 去除等号; 
+	for (i=0;i<l;i++)
+	{
+		if (input[i] != '=')
+			temp += input[i];
+	}
+	input = "";
+	input = temp;
+	//-----1判断括号是否匹配 
+	for (i = 0; i < l; i++)
+	{
+		if (input[i] == '(')
+		{
+			n++;
+		}
+		if (input[i] == ')')
+		{
+			t++;
+		}
+	}
+	if (n > t)
+	{
+		for (i = 0; i < n-t; i++)
+		{
+			input += ")";
+		}
+	}
+	if (n < t)
+	{
+		for (i = 0; i < t-n; i++)
+		{
+			temp += "(";
+		}
+		input = temp + input;	
+	}
+	//------2判断四则运算是否符合规范 
+	temp = "";
+	l = input.size();
+	for (i = 0; i < l; i++)
+	{
+		if ((i+1) < l && input[i] == '(' && input[i+1] == '(')
+			temp += input[i];
+		else if((i+1) < l && input[i] == '(' && input[i+1] < '0')
+		{
+			temp += input[i];
+			temp += "0";
+		}
+		else
+			temp += input[i];
+	}
+	l = temp.size();
+	input = "";
+	for (i = 0; i < l; i++)
+	{
+		if( (i+1) < l && (temp[i] >= '0' && temp[i+1] == '(') || (temp[i] == ')' && temp[i+1] >= '0'))
+		{
+			if (temp[i] == '=')
+				continue;
+			input += temp[i];
+			input += "*";
+		}
+		else
+			if((i+1) < l && temp[i] < '0' && temp[i+1] < '0' && 
+					temp[i] != temp[i+1] && temp[i] >= 42 && temp[i+1] >= 42)
+		{
+			input += temp[i];
+			input += "(0";
+			input += temp[++i];
+			if(temp[++i] == '(')
+			{
+				n = 0;
+				for ( i = i; i < l ; i++)
+				{
+					input += temp[i];
+					if(temp[i] == '(')
+					{
+						n++;		
+					}
+					if(temp[i] == ')')
+					{
+						n--;
+						if(n == 0)
+							break;
+					}
+				}
+				if (i < l)
+					input += ")";
+			}
+			else
+			{
+				input += temp[++i];
+				input += temp[++i];
+				input += ")";
+			}
+		}
+		else 
+			input += temp[i];
+	} 
+	//-------------------------------------
+   
     /*flg作为标记出现位数超过十位的情况,出现标记为1,total表示当前数字位数*/
     int flg = 0,total = 0;       
-    
-	for (int i = 0; i < l;)
+    l = input.size();
+	for ( i = 0; i < l;)
     {
         /*添加一个空字符串存取表达式*/
         string tmp = "";
@@ -68,6 +170,7 @@ queue<string> Scan::ToStringQueue(string input)
             i++;
         }
     }
-
+    arithmetic.push("=");
+    
     return arithmetic;          
 }    

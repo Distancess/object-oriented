@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "scan.h"
+#include "calculate.h"
 
 using namespace std;
 
@@ -12,7 +13,9 @@ class Print
     public:
         Print();
         ~Print();
-    void PrintStringQueue(string input);  
+    void PrintStringQueue(string input);
+	void Printanswer(string input);
+	void Usedfile(string input, string read, string ans);  
     private:
 };
 

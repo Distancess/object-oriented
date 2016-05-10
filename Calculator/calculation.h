@@ -1,7 +1,8 @@
 #ifndef CALCULATION_H
 #define CALCULATION_H
 #include <iostream>
-#include <string> 
+#include <string>
+#include <stack> 
 #include "scan.h"
 
 using namespace std;
@@ -11,9 +12,11 @@ class Calculation
 	public:
 		Calculation();
 		~Calculation();
-		void Getqueue(string input);
+		stack<string> Getqueue(string input);
 	protected:
-		bool error;
+		stack<string>sign; 
+		stack<string>opr;
+		stack<string>rpn;
 };
 
 #endif

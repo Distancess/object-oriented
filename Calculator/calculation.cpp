@@ -2,7 +2,6 @@
 栈：sign用来存取运算符；
 	opr用来存取操作数；
 	rpn用来存取后缀表达式； 
-	num用来存取整型数据；
 数组：mark：标记符号优先级； 
 函数：sstream用来操作字符串类型与整型字符型的转化；
 	  clear  用来清除多次使用的sstream对象；	 
@@ -17,21 +16,21 @@ using namespace std;
 
 Calculation::Calculation()
 {
-	error = false;
 }
 
 Calculation::~Calculation()
 {
 }
-
-//------------------------------------------------------
-	stack<string>sign; 
-	stack<string>opr;
-	stack<string>rpn;
-//------------------------------------------------------
-void Calculation::Getqueue(string input)
-{
 	
+//------------------------------------------------------
+stack<string> Calculation::Getqueue(string input)
+{
+	while (rpn.empty()  == false)
+		rpn.pop();
+	while (opr.empty()  == false)
+		opr.pop();
+	while (sign.empty() == false)
+		sign.pop();
 	//初始化-------------------------------------- 
 	int mark[50];
 	mark['+'] = 1;
@@ -61,7 +60,7 @@ void Calculation::Getqueue(string input)
 			//---2.处理运算符
 			else
 			{
-				if ( sign.empty() == true || sign.top() == "(")  
+				if ( sign.empty() == true || (sign.top() == "(" && tmp1.front() != ")"))  
 				{
 					sign.push( tmp1.front() );
 					tmp1.pop();
@@ -114,69 +113,7 @@ void Calculation::Getqueue(string input)
 			rpn.push( opr.top() );
 			opr.pop();
 		}
-	
-		//4.开始计算啦
-		//初始化--------------------- 
-		stringstream stream;
-		double n,a,b;
-		stack<double>num;
-		//---------------------------
-		while ( rpn.empty() == false)
-		{
-			if ( rpn.top()[0] >= '0' && rpn.top()[0] <='9')
-			{
-				stream << rpn.top();
-				stream >> n;
-				num.push(n);
-				stream.clear();
-				rpn.pop(); 
-			}
-			else
-			{
-				a = num.top();
-				num.pop();
-				b = num.top();
-				num.pop();
-				if (rpn.top() == "+")
-				{
-					num.push(b+a);
-					rpn.pop();
-				}
-				else if (rpn.top() == "-")
-				{
-					num.push(b-a);
-					rpn.pop();
-				}
-				else if (rpn.top() == "*")
-				{
-					num.push(a*b);
-					rpn.pop();  
-				}
-				else
-				{
-					//除数为0时的处理 
-					if ( a==0 )
-					{
-						error = true;
-						num.push(0);
-						rpn.pop(); 
-					}
-					else
-					{
-						num.push((double)b/a);
-						rpn.pop();
-					}
-				} 
-			}
-		}
-		
-		if ( error == true)
-		{ 
-			cout << "Error" << endl;
-		} 
-		else
-		{ 
-			cout << num.top() << endl; 
-		}
 	} 
+	
+	return rpn;
 } 
