@@ -42,6 +42,7 @@ BEGIN_MESSAGE_MAP(Cpage2, CDialog)
     ON_EN_CHANGE(IDC_EDIT1, &Cpage2::OnEnChangeEdit1)
     ON_EN_CHANGE(IDC_EDIT1, &Cpage2::OnEnChangeEdit1)
     ON_EN_CHANGE(IDC_EDIT2, &Cpage2::OnEnChangeEdit2)
+    ON_BN_CLICKED(IDC_BUTTON4, &Cpage2::OnBnClickedButton4)
 END_MESSAGE_MAP()
 
 
@@ -60,6 +61,18 @@ void Cpage2::OnBnClickedButton1()
 }
 
 
+void Cpage2::OnBnClickedButton4()
+{
+    // TODO: 在此添加控件通知处理程序代码
+    CFileDialog fileDlg(true, _T("txt"), _T("*.txt"), OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, _T("txt Files (*.txt)|*.tx|All File (*.*)|*.*||"), NULL);
+    if (fileDlg.DoModal() == IDOK)    //弹出对话框  
+    {
+        goutputFilePathName = fileDlg.GetPathName();//得到完整的文件名和目录名拓展名  
+        GetDlgItem(IDC_EDIT2)->SetWindowText(goutputFilePathName);//将路径显示  
+    }
+}
+
+
 void Cpage2::OnBnClickedButton3()
 {
     // TODO: 在此添加控件通知处理程序代码
@@ -72,6 +85,7 @@ void Cpage2::OnBnClickedButton3()
 
     //调用.c_str()接受字符串作为文件名;
     USES_CONVERSION;
+    GetDlgItem(IDC_EDIT1)->GetWindowText(gReadFilePathName);
     GetDlgItem(IDC_EDIT2)->GetWindowText(goutputFilePathName);
     string read = W2CA((LPCWSTR)gReadFilePathName);
     string result  = W2CA((LPCWSTR)goutputFilePathName);
@@ -136,3 +150,5 @@ void Cpage2::OnEnChangeEdit2()
 
     // TODO:  在此添加控件通知处理程序代码
 }
+
+

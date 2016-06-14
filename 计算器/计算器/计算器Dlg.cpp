@@ -116,10 +116,10 @@ BOOL C计算器Dlg::OnInitDialog()
 
     //调整子对话框在父窗口中的位置
 
-    rs.top += 30;
-    rs.bottom -= 60;
+    rs.top += 26;
+    rs.bottom -= 3;
     rs.left += 1;
-    rs.right -= 2;
+    rs.right -= 4;
     //设置子对话框尺寸并移动到指定位置
 
     m_Page1.MoveWindow(&rs);
@@ -205,3 +205,5 @@ void C计算器Dlg::OnTcnSelchangingTab1(NMHDR *pNMHDR, LRESULT *pResult)
     }
     *pResult = 0;
 }
+
+
