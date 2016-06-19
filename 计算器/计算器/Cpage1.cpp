@@ -52,6 +52,7 @@ BEGIN_MESSAGE_MAP(Cpage1, CDialog)
     ON_BN_CLICKED(IDC_BUTTON16, &Cpage1::OnBnClickedButton16)
     ON_BN_CLICKED(IDC_BUTTON17, &Cpage1::OnBnClickedButton17)
     ON_BN_CLICKED(IDC_BUTTON18, &Cpage1::OnBnClickedButton18)
+    ON_EN_CHANGE(IDC_EDIT1, &Cpage1::OnEnChangeEdit1)
 END_MESSAGE_MAP()
 
 
@@ -63,6 +64,7 @@ void Cpage1::OnBnClickedButton1()
     // TODO: 在此添加控件通知处理程序代码
     m_result += _T("1");//unicode编码需要对_T()对字符串进行操作
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -70,6 +72,7 @@ void Cpage1::OnBnClickedButton2()
 {
     m_result += _T("2");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -77,6 +80,7 @@ void Cpage1::OnBnClickedButton3()
 {
     m_result += _T("3");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -84,6 +88,7 @@ void Cpage1::OnBnClickedButton4()
 {
     m_result += _T("4");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -91,6 +96,7 @@ void Cpage1::OnBnClickedButton5()
 {
     m_result += _T("5");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -98,6 +104,7 @@ void Cpage1::OnBnClickedButton6()
 {
     m_result += _T("6");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -105,19 +112,23 @@ void Cpage1::OnBnClickedButton7()
 {
     m_result += _T("7");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
 void Cpage1::OnBnClickedButton8()
 {
     m_result += _T("8");
-    UpdateData(FALSE);}
+    UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
+}
 
 
 void Cpage1::OnBnClickedButton9()
 {
     m_result += _T("9");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -125,6 +136,7 @@ void Cpage1::OnBnClickedButton20()
 {
     m_result += _T("0");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -132,6 +144,7 @@ void Cpage1::OnBnClickedButton19()
 {
     m_result += _T(".");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -139,6 +152,7 @@ void Cpage1::OnBnClickedButton10()//ESC按钮
 {
     m_result = "";
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -153,6 +167,7 @@ void Cpage1::OnBnClickedButton11()//Backspace 按钮
     }
     m_result = tmp;
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -160,6 +175,7 @@ void Cpage1::OnBnClickedButton12()
 {
     m_result += _T("(");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -167,6 +183,7 @@ void Cpage1::OnBnClickedButton13()
 {
     m_result += _T(")");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -174,6 +191,7 @@ void Cpage1::OnBnClickedButton14()
 {
     m_result += _T("/");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -181,6 +199,7 @@ void Cpage1::OnBnClickedButton15()
 {
     m_result += _T("*");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -188,6 +207,7 @@ void Cpage1::OnBnClickedButton16()
 {
     m_result += _T("-");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -195,6 +215,7 @@ void Cpage1::OnBnClickedButton17()
 {
     m_result += _T("+");
     UpdateData(FALSE);
+    ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
 }
 
 
@@ -231,11 +252,13 @@ void Cpage1::OnBnClickedButton18()// = 按钮
             str += m_result;
             m_result = str;
             UpdateData(FALSE);
+            ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
         }
         else
         {
             m_result = _T("ERROR");
             UpdateData(FALSE);
+            ((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(m_result.GetLength(), m_result.GetLength(), FALSE);
         }
     }
     m_result = _T("");
@@ -353,4 +376,14 @@ BOOL Cpage1::PreTranslateMessage(MSG* pMsg)
         }
     }
     return CDialog::PreTranslateMessage(pMsg);
+}
+
+void Cpage1::OnEnChangeEdit1()
+{
+    // TODO:  如果该控件是 RICHEDIT 控件，它将不
+    // 发送此通知，除非重写 CDialog::OnInitDialog()
+    // 函数并调用 CRichEditCtrl().SetEventMask()，
+    // 同时将 ENM_CHANGE 标志“或”运算到掩码中。
+
+    // TODO:  在此添加控件通知处理程序代码
 }

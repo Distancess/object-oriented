@@ -53,4 +53,5 @@ public:
     afx_msg void OnBnClickedButton17();
     afx_msg void OnBnClickedButton18();
     BOOL PreTranslateMessage(MSG * pMsg);
+    afx_msg void OnEnChangeEdit1();
 };
